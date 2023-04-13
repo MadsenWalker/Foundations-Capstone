@@ -1,14 +1,21 @@
-const express = require("express")
-const cors = require("cors")
-const axios = require("axios")
+require("dotenv").config();
+const { CONNECTION_STRING } = process.env;
+const Sequelize = require("sequelize");
+const sequelize = new Sequelize(CONNECTION_STRING, {
+    dialect: 'postgres', 
+    })
 
-const app = express();
+const templates = require("./db.json");
 
+module.exports = {
+  getAllWeeks: (req, res) => {
 
-app.use(express.json());
-app.use(express.static(`${__dirname}/public`));
+ sequelize.query(`select * from cc_week`)
+            .then(dbRes => res.status(200).send(dbRes[0]))
+            .catch(err => console.log(err))
+    }, 
 
-app.listen(//enter port number// 
-, () => {
-    consol.log('Listening on //port number//')
-});
+  editTemplate: (req, res) => {
+    res.status(200).send(something);
+  },
+};

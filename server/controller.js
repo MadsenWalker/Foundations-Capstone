@@ -12,9 +12,9 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
 
 
 module.exports = {
-  getAllWeek: (req, res) => {
+  getAllLearn: (req, res) => {
 
- sequelize.query(`select * from week`)
+ sequelize.query(`select * from learn`)
             .then(dbRes => res.status(200).send(dbRes[0]))
             .catch(err => console.log(err))
     }, 
@@ -22,4 +22,17 @@ module.exports = {
   editTemplate: (req, res) => {
     res.status(200).send(something);
   },
+
+  addLearn: (req,res) => {
+    let {problem,difficulty,link} = req.body;  
+    
+
+    sequelize
+      .query(`INSERT INTO learn (problem_name,difficulty,link) VALUES('${problem}',${difficulty},'${link}')`)
+      .then((dbRes) => {
+       
+        res.status(200).send()})
+      .catch((err) => console.log(err));
+
+  }
 };

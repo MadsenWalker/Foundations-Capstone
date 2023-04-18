@@ -1,16 +1,20 @@
-require("dotenv").config();
+require('dotenv').config();
 const { CONNECTION_STRING } = process.env;
-const Sequelize = require("sequelize");
+const Sequelize = require('sequelize');
 const sequelize = new Sequelize(CONNECTION_STRING, {
-    dialect: 'postgres', 
-    })
+  dialect: "postgres",
+  dialectOptions: {
+    ssl: {
+      rejectUnauthorized: false,
+    },
+  },
+});
 
-const templates = require("./db.json");
 
 module.exports = {
-  getAllWeeks: (req, res) => {
+  getAllWeek: (req, res) => {
 
- sequelize.query(`select * from cc_week`)
+ sequelize.query(`select * from week`)
             .then(dbRes => res.status(200).send(dbRes[0]))
             .catch(err => console.log(err))
     }, 

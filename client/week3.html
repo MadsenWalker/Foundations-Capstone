@@ -11,70 +11,39 @@
     <nav>
         <a href="weeks.html"></a>
     </nav>
-    <div> Week 1
-<div>do you know as much as a 1st week coding student?</div>
+    <div> Week 2
+<div>do you know as much as a 2nd week coding student?</div>
 <p>filler text</p>
     </div>
 
-  <div> <h2>MAX OF TWO</h2>
+  <div> <h2>FIND LUCKY NUMBERS</h2>
     <section class="Instructions">
-        This challenge, you’ll write a function, called best, that returns the maximum profit possible for buying-and-selling a stock.
+        Given a number, n, return an array containing n unique random numbers between 1-10, inclusive. (That is, do not repeat any numbers in the returned list.)
 
-The best function will be given an array of stock prices in the order they happened throughout the day.
+You can trust that this function will never be called with n < 0 or n > 10.
 
-It should return the maximum possible profit on the stock for that day.
+For example:
 
-For example, with the following prices, our best option would have been to buy the stock at $10 and sell it at $22. So the profit would be $12:
-
-best([15, 10, 20, 22, 1, 9])
-12
-Here are some more examples with positive profit:
-
-best([1, 2, 3, 4, 5])
-// 4 - buy at $1, sell at $5
-
-best([2, 3, 10, 6, 4, 8, 1])
-// 8 - buy at $2, sell at $10
-
-best([7, 9, 5, 6, 3, 2])
-// 2 - buy at $7, sell at $9
-
-best([0, 100])
-// 100 - buy at $0, sell at $100
-If no profit is possible, return $0:
-
-best([5, 4 , 3, 2, 1])
-// 0
-
-best([100])
-// 0
-
-best([100, 0])
-// 0
+luckyNumbers(2)
+// returns (3, 7)
+luckyNumbers(6)
+// returns (1, 7, 9, 6, 5, 2)
     </section>
+
     <section class="Solution">
-const best = prices => {
-  let maxDiff = 0
-  let lowSoFar
+let x = 1
+let y = 2
 
-  for (let i = 0; i < prices.length; i++) {
-    if (lowSoFar === undefined || prices[i] < lowSoFar) {
-      lowSoFar = prices[i]
-    }
-
-    let diff = prices[i] - lowSoFar
-
-    if (diff > maxDiff) {
-      maxDiff = diff
-    }
+function findLuckyNumbers(n) {
+  let possibleNumbers = [1,2,3,4,5,6,7,8,9,10]
+  let luckyNumbers = []
+  for (let i = 0; i &lt; n; i++) {
+    let x = Math.floor(Math.random() * possibleNumbers.length);
+    luckyNumbers.push(possibleNumbers[x])
+    possibleNumbers.splice(x, 1)
   }
-
-  return maxDiff
+  return luckyNumbers
 }
-
-// best([1, 2, 3, 4, 5])\
-// best([2, 3, 10, 6, 4, 8, 1])
-// best([5, 4 , 3, 2, 1])
     </section>
 
   </div>
@@ -82,11 +51,11 @@ const best = prices => {
   <button>Add to List</button>
   <section class="additional">
    <p>
-    <a href="https://www.codewars.com/kata/56bc28ad5bdaeb48760009b0"> Remove First and Last Letter</a>
+    <a href="https://www.codewars.com/kata/58261acb22be6e2ed800003a">Volume of a Cuboid</a>
 </p>
 
 <p>
-<a href="https://www.codewars.com/kata/557b5e0bddf29d861400005d">Miles per gallon to kilometers per liter</a>
+<a href="https://www.codewars.com/kata/5834fec22fb0ba7d080000e8">BASIC: Making Six Toast.</a>
 </p>
 
 <section> Addtional Resources

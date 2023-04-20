@@ -12,16 +12,13 @@ const sequelize = new Sequelize(CONNECTION_STRING, {
 
 
 module.exports = {
-  getAllLearn: (req, res) => {
+  getLearn: (req, res) => {
 
  sequelize.query(`select * from learn`)
             .then(dbRes => res.status(200).send(dbRes[0]))
             .catch(err => console.log(err))
     }, 
 
-  editTemplate: (req, res) => {
-    res.status(200).send(something);
-  },
 
   addLearn: (req,res) => {
     let {problem,difficulty,link} = req.body;  
